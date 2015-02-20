@@ -456,11 +456,15 @@ class Gracenote
   #   attribute
   #   value
   def _getAttribElem(data, attribute, value)
-    data.each do |g|
-      attrib = Rack::Utils.parse_query URI(g).query
-      if(attrib[attribute] == value) 
-        return g
+    begin
+      data.each do |g|
+        attrib = Rack::Utils.parse_query URI(g).query
+        if(attrib[attribute] == value) 
+          return g
+        end
       end
+    rescue
+      nil
     end
   end
 

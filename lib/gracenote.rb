@@ -477,7 +477,7 @@ class Gracenote
       input = data
     end
     input.each do |g|
-      output.push({:id => g["ID"].to_i, :text => g})
+      output.push({:id => g["ID"].to_i, :text => g}) unless g.nil?
     end
     return output
   end
